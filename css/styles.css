@@ -3,20 +3,20 @@ CUSTOM PROPERTIES
 ================ */
 :root {
 
-    --clr-neutral-100: hsl(0, 0%, 100%);
-    --clr-neutral-200: hsl(189, 41%, 97%);
-    --clr-neutral-300: hsl(185, 41%, 84%);
-    --clr-neutral-400: hsl(184, 14%, 56%);
-    --clr-neutral-500: hsl(186, 14%, 43%);
+    --clr-neutral-100: 0 0% 100%;
+    --clr-neutral-200: 189 41% 97%;
+    --clr-neutral-300: 185 41% 84%;
+    --clr-neutral-400: 184 14% 56%;
+    --clr-neutral-500: 186 14% 43%;
 
 
-    --clr-primary-400: hsl(172, 67%, 45%);
-    --clr-primary-800: hsl(183, 100%, 15%);
+    --clr-primary-400: 172 67% 45%;
+    --clr-primary-800: 183 100% 15%;
 
     --ff-primary: 'Space Mono', monospace;
 
-    --fs-200: 1rem;
-    --fs-300: 1.25rem;
+    --fs-200: 0.75rem;
+    --fs-300: 1rem;
     --fs-400: 1.5rem;
     --fs-500: 2rem; 
 
@@ -73,6 +73,16 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+
+  font-family: var(--ff-primary);
+  font-size: var(--fs-400);
+  font-weight: var(--fw-700);
+  color: hsl(var(--clr-neutral-500));
+  background-color: hsl(var(--clr-neutral-300));
+
+
+  display: grid;
+  place-content: center;
 }
 
 /* Ggives default styling to a elements that don't have a class */
@@ -141,7 +151,8 @@ UTILITY CLASSES
 =============== */
 
 .container {
-    width: min(95%, 56.25rem);
+    width: 90%;
+    max-width: 56.25rem;
     margin-inline: auto;
 }
 
@@ -151,10 +162,84 @@ UTILITY CLASSES
 }
 
 .grid {
-    display: flex;
+    display: grid;
     gap: var(--grid-gap, 1rem)
 }
 
 .flow > * + * {
     margin-top: var(--flow-space, 1rem);
+}
+
+.bg-neutral-100 { background-color: hsl(var(--clr-neutral-100));}
+.bg-neutral-200 { background-color: hsl(var(--clr-neutral-200));}
+.bg-primary-800 { background-color: hsl(var(--clr-primary-800));}
+
+.text-neutral-100 { color: hsl(var(--clr-neutral-100));}
+.text-neutral-300 { color: hsl(var(--clr-neutral-300));}
+.text-primary-400 { color: hsl(var(--clr-primary-400));}
+.text-primary-800 { color: hsl(var(--clr-primary-800));}
+
+.fs-200 { font-size: var(--fs-200);}
+.fs-300 { font-size: var(--fs-300);}
+.fs-400 { font-size: var(--fs-400);}
+.fs-500 { font-size: var(--fs-500);}
+
+.uppercase { text-transform: uppercase;}
+.d-block { display: block;}
+.center { text-align: center;}
+
+.sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    clip: rect(0, 0, 0, 0) !important;
+    border: none !important;
+}
+
+/* ==============
+LAYOUT
+=============== */
+
+.grid[data-type="primary"] {
+    grid-template-columns: 1fr;
+}
+
+.grid[data-type="primary"] > * {
+    grid-column: 1 / -1;
+}
+
+.grid[data-type="secondary"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.tip-calculator {
+    padding: 2rem;
+}
+
+.tip-calculator input {
+    max-width: 100%;
+    border: none;
+    padding-block: .25rem;
+    padding-inline: 1rem;
+    color: hsl(var(--clr-primary-800));
+    text-align: right;
+}
+
+.btn {
+    padding: .125rem 1rem;
+}
+
+.btn[data-type="primary"] {
+    background-color: hsl(var(--clr-primary-800));
+    color: hsl(var(--clr-neutral-100));
+}
+
+.btn[data-type="primary"]:hover,
+.btn[data-type="primary"]:focus {
+    background-color: hsl(var(--clr-primary-400) / .5);
+    color:hsl(var(--clr-primary-800))
 }

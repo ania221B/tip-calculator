@@ -39,7 +39,7 @@
   <body>
     <main>
       <header class="container">
-        <h1>
+        <h1 class="center">
           <svg xmlns="http://www.w3.org/2000/svg" width="87" height="54">
             <path
               fill="#3D6666"
@@ -49,29 +49,38 @@
         </h1>
       </header>
 
-      <form action="#" class="tip-calculator container">
+      <form
+        action="#"
+        class="tip-calculator container grid bg-neutral-100"
+        data-type="primary"
+      >
         <!--Bill-->
         <fieldset>
-          <legend>Bill</legend>
-          <label for="bill-amount">Enter total bill amount</label>
+          <legend class="fs-300">Bill</legend>
+          <label for="bill-amount" class="sr-only"
+            >Enter total bill amount</label
+          >
           <input
             id="bill-amount"
             name="bill-amount"
             type="text"
             inputmode="numeric"
             pattern="\d*"
+            class="bg-neutral-200"
           />
         </fieldset>
 
         <!--select tip % -->
-        <fieldset>
-          <legend>Select Tip %</legend>
-          <button type="button">5%</button>
-          <button type="button">10%</button>
-          <button type="button">15%</button>
-          <button type="button">25%</button>
-          <button type="button">50%</button>
-          <label for="custom-tip">Enter custom tip percent</label>
+        <fieldset class="grid" data-type="secondary">
+          <legend class="fs-300">Select Tip %</legend>
+          <button type="button" class="btn" data-type="primary">5%</button>
+          <button type="button" class="btn" data-type="primary">10%</button>
+          <button type="button" class="btn" data-type="primary">15%</button>
+          <button type="button" class="btn" data-type="primary">25%</button>
+          <button type="button" class="btn" data-type="primary">50%</button>
+          <label for="custom-tip" class="sr-only"
+            >Enter custom tip percent</label
+          >
           <input
             id="custom-tip"
             name="custom-tip"
@@ -79,43 +88,55 @@
             inputmode="numeric"
             pattern="\d*"
             placeholder="Custom"
+            class="btn bg-neutral-200"
           />
         </fieldset>
 
         <!-- number of people -->
         <fieldset>
-          <legend>Number of People</legend>
-          <label for="people">Enter number of people</label>
+          <legend class="fs-300">Number of People</legend>
+          <label for="people" class="sr-only">Enter number of people</label>
           <input
             id="people"
             name="people"
             type="text"
             inputmode="numeric"
             pattern="\d*"
+            class="bg-neutral-200"
           />
         </fieldset>
 
         <!-- results -->
-        <section role="region" aria-label="calculation results">
-          <div>
-            <h2>Tip Amount <span>/ person</span></h2>
+        <section
+          class="results grid bg-primary-800"
+          role="region"
+          aria-label="calculation results"
+        >
+          <div class="flex">
+            <h2 class="fs-300 text-neutral-100">
+              Tip Amount
+              <span class="fs-200 text-neutral-300 d-block">/ person</span>
+            </h2>
 
-            <div>$0.00</div>
+            <div class="fs-500 text-primary-400">$0.00</div>
           </div>
-          <div>
-            <h2>Total <span>/ person</span></h2>
-            <div>$0.00</div>
+          <div class="flex">
+            <h2 class="fs-300 text-neutral-100">
+              Total
+              <span class="fs-200 text-neutral-300 d-block">/ person</span>
+            </h2>
+            <div class="fs-500 text-primary-400">$0.00</div>
           </div>
-          <button type="reset">Reset</button>
+          <button class="uppercase" type="reset">Reset</button>
         </section>
       </form>
     </main>
 
-    <div class="attribution">
+    <footer class="attribution container">
       Challenge by
       <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
         >Frontend Mentor</a
       >. Coded by <a href="#">Your Name Here</a>.
-    </div>
+    </footer>
   </body>
 </html>
