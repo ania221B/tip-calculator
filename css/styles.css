@@ -1,0 +1,25 @@
+/* ==========
+CUSTOM PROPERTIES 
+=========== */
+:root {
+
+    --clr-neutral-100: hsl(0, 0%, 100%);
+    --clr-neutral-200: hsl(189, 41%, 97%);
+    --clr-neutral-300: hsl(185, 41%, 84%);
+    --clr-neutral-400: hsl(184, 14%, 56%);
+    --clr-neutral-500: hsl(186, 14%, 43%);
+
+
+    --clr-primary-400: hsl(172, 67%, 45%);
+    --clr-primary-800: hsl(183, 100%, 15%);
+
+    --ff-primary: 'Space Mono', monospace;
+
+    --fs-200: 1rem;
+    --fs-300: 1.25rem;
+    --fs-400: 1.5rem;
+    --fs-500: 2rem; 
+
+    --fw-400: 400;
+    --fw-700: 700;
+}
