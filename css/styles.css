@@ -1,6 +1,6 @@
-/* ==========
+/* ==============
 CUSTOM PROPERTIES 
-=========== */
+================ */
 :root {
 
     --clr-neutral-100: hsl(0, 0%, 100%);
@@ -134,4 +134,27 @@ button {
     border: none;
     background: none;
     cursor: pointer;
+}
+
+/* ==============
+UTILITY CLASSES
+=============== */
+
+.container {
+    width: min(95%, 56.25rem);
+    margin-inline: auto;
+}
+
+.flex {
+    display: flex;
+    gap: var(--flex-gap, 1rem);
+}
+
+.grid {
+    display: flex;
+    gap: var(--grid-gap, 1rem)
+}
+
+.flow > * + * {
+    margin-top: var(--flow-space, 1rem);
 }
