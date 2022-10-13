@@ -55,7 +55,7 @@
         data-type="primary"
       >
         <!--Bill-->
-        <fieldset>
+        <fieldset class="grid">
           <legend class="fs-300">Bill</legend>
           <label for="bill-amount" class="sr-only"
             >Enter total bill amount</label
@@ -73,11 +73,46 @@
         <!--select tip % -->
         <fieldset class="grid" data-type="secondary">
           <legend class="fs-300">Select Tip %</legend>
-          <button type="button" class="btn" data-type="primary">5%</button>
-          <button type="button" class="btn" data-type="primary">10%</button>
-          <button type="button" class="btn" data-type="primary">15%</button>
-          <button type="button" class="btn" data-type="primary">25%</button>
-          <button type="button" class="btn" data-type="primary">50%</button>
+          <button
+            type="button"
+            aria-selected="false"
+            class="btn"
+            data-type="primary"
+          >
+            5%
+          </button>
+          <button
+            type="button"
+            aria-selected="false"
+            class="btn"
+            data-type="primary"
+          >
+            10%
+          </button>
+          <button
+            type="button"
+            aria-selected="false"
+            class="btn"
+            data-type="primary"
+          >
+            15%
+          </button>
+          <button
+            type="button"
+            aria-selected="false"
+            class="btn"
+            data-type="primary"
+          >
+            25%
+          </button>
+          <button
+            type="button"
+            aria-selected="false"
+            class="btn"
+            data-type="primary"
+          >
+            50%
+          </button>
           <label for="custom-tip" class="sr-only"
             >Enter custom tip percent</label
           >
@@ -93,7 +128,7 @@
         </fieldset>
 
         <!-- number of people -->
-        <fieldset>
+        <fieldset class="grid">
           <legend class="fs-300">Number of People</legend>
           <label for="people" class="sr-only">Enter number of people</label>
           <input
@@ -127,7 +162,7 @@
             </h2>
             <div class="fs-500 text-primary-400">$0.00</div>
           </div>
-          <button class="uppercase" type="reset">Reset</button>
+          <button class="btn fs-350 uppercase" type="reset">Reset</button>
         </section>
       </form>
     </main>

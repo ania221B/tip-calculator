@@ -17,11 +17,16 @@ CUSTOM PROPERTIES
 
     --fs-200: 0.75rem;
     --fs-300: 1rem;
+    --fs-350: 1.25rem;
     --fs-400: 1.5rem;
     --fs-500: 2rem; 
 
     --fw-400: 400;
     --fw-700: 700;
+
+    --br-small: 0.25em;
+    --br-medium: 0.5em;
+    --br-large: 0.75em;
 }
 
 /* ==========
@@ -181,6 +186,7 @@ UTILITY CLASSES
 
 .fs-200 { font-size: var(--fs-200);}
 .fs-300 { font-size: var(--fs-300);}
+.fs-350 { font-size: var(--fs-350);}
 .fs-400 { font-size: var(--fs-400);}
 .fs-500 { font-size: var(--fs-500);}
 
@@ -218,11 +224,13 @@ LAYOUT
 
 .tip-calculator {
     padding: 2rem;
+    border-radius: var(--br-large);
 }
 
 .tip-calculator input {
     max-width: 100%;
     border: none;
+    border-radius: var(--br-small);
     padding-block: .25rem;
     padding-inline: 1rem;
     color: hsl(var(--clr-primary-800));
@@ -231,6 +239,7 @@ LAYOUT
 
 .btn {
     padding: .125rem 1rem;
+    border-radius: var(--br-small);
 }
 
 .btn[data-type="primary"] {
@@ -242,4 +251,25 @@ LAYOUT
 .btn[data-type="primary"]:focus {
     background-color: hsl(var(--clr-primary-400) / .5);
     color:hsl(var(--clr-primary-800))
+}
+
+.btn[aria-selected="true"] {
+  background-color: hsl(var(--clr-primary-400));
+  color: hsl(var(--clr-primary-800));
+}
+
+.btn[type="reset"] {
+  padding: .5rem 1rem;
+  background-color: hsl(var(--clr-neutral-300) / .2);
+  color: hsl(var(--clr-primary-800) / .9)
+}
+
+.results {
+  padding: 1.5rem;
+  border-radius: var(--br-medium);
+}
+
+.results .flex {
+  justify-content: space-between;
+  align-items: center;
 }
