@@ -154,7 +154,7 @@ UTILITY CLASSES
 
 .container {
   width: 90%;
-  max-width: 56.25rem;
+  max-width: 75rem;
   margin-inline: auto;
 }
 
@@ -239,17 +239,40 @@ LAYOUT
 
 .grid[data-type="primary"] {
   grid-template-columns: 1fr;
+  column-gap: 2rem;
 }
 
 .grid[data-type="primary"] > * {
   grid-column: 1 / -1;
 }
 
+@media (min-width: 56.25em) {
+  .grid[data-type="primary"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid[data-type="primary"] > *:not(.results) {
+    grid-column: 1 / span 1;
+  }
+
+  .grid[data-type="primary"] > .results {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 3;
+  }
+}
+
 .grid[data-type="secondary"] {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+@media (min-width: 56.25em) {
+  .grid[data-type="secondary"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 .tip-calculator {
+  --flow-space: 1.5rem;
   padding: 2rem;
   border-radius: var(--br-large);
 }
@@ -292,6 +315,7 @@ LAYOUT
   background-color: hsl(var(--clr-neutral-300) / 0.2);
   color: hsl(var(--clr-primary-800) / 0.9);
   cursor: not-allowed;
+  align-self: end;
 }
 
 .btn[aria-selected="true"],
