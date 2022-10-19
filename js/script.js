@@ -52,7 +52,7 @@ tipCalculator.addEventListener('input', e => {
     if (bill === 0) {
       billError.textContent = 'Can\'t be zero'
     } else {
-      billError.textContent = 'Enter value'
+      billError.textContent = 'Enter number'
     }
   } else {
     billInput.style.outline = 'none'
@@ -69,7 +69,7 @@ tipCalculator.addEventListener('input', e => {
     if (people === 0) {
       peopleError.textContent = 'Can\'t be zero'
     } else {
-      peopleError.textContent = 'Enter value'
+      peopleError.textContent = 'Enter number'
     }
   } else {
     peopleInput.style.outline = 'none'
