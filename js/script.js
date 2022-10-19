@@ -86,5 +86,8 @@ tipCalculator.addEventListener('reset', _ => {
 
     input.style.outline = 'none'
     error.textContent = ''
+    tipAmountDiv.textContent = '0.00'
+    totalDiv.textContent = '0.00'
+    reset.classList.remove('active')
   })
 })
