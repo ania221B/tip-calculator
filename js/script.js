@@ -76,3 +76,15 @@ tipCalculator.addEventListener('input', e => {
     peopleError.textContent = ''
   }
 })
+
+tipCalculator.addEventListener('reset', _ => {
+  const errors = tipCalculator.querySelectorAll('.error')
+
+  errors.forEach(error => {
+    const parent = error.parentElement
+    const input = parent.querySelector('input')
+
+    input.style.outline = 'none'
+    error.textContent = ''
+  })
+})
