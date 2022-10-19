@@ -11,6 +11,8 @@ CUSTOM PROPERTIES
   --clr-primary-400: 172 67% 45%;
   --clr-primary-800: 183 100% 15%;
 
+  --clr-error: rgb(247, 82, 40);
+
   --ff-primary: "Space Mono", monospace;
 
   --fs-200: 0.75rem;
@@ -140,14 +142,6 @@ fieldset {
 body:not(:-moz-handler-blocked) fieldset {
   display: table-cell;
 }
-
-/* removes default styles form button */
-button {
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
 /* ==============
 UTILITY CLASSES
 =============== */
@@ -277,7 +271,11 @@ LAYOUT
   border-radius: var(--br-large);
 }
 
-.tip-calculator input {
+.tip-calculator fieldset {
+  position: relative;
+}
+
+.tip-calculator input[type="text"] {
   max-width: 100%;
   border: none;
   border-radius: var(--br-small);
@@ -287,27 +285,55 @@ LAYOUT
   text-align: right;
 }
 
-.tip-calculator input:hover,
-.tip-calculator input:focus {
+.tip-calculator input[type="text"]:hover,
+.tip-calculator input[type="text"]:focus {
   outline: none;
   outline: 0.125rem solid hsl(var(--clr-primary-400));
 }
 
 .btn {
+  border: none;
+  background: none;
+  cursor: pointer;
   padding: 0.125rem 1rem;
   border-radius: var(--br-small);
 }
 
-.btn[data-type="primary"] {
+.tip__wrapper {
+  position: relative;
+  padding: 0.125rem 1rem;
+  border-radius: var(--br-small);
+  overflow: hidden;
+}
+
+.tip__wrapper:last-child {
+  padding: 0;
+}
+
+input[data-type="primary"] {
+  opacity: 0;
+}
+
+input[data-type="primary"] + label {
+  position: absolute;
+  inset: 0;
+
+  display: grid;
+  place-items: center;
+  line-height: 1;
   background-color: hsl(var(--clr-primary-800));
   color: hsl(var(--clr-neutral-100));
 }
 
-.btn[data-type="primary"]:hover,
-.btn[data-type="primary"]:focus {
+input[data-type="primary"] + label:hover {
   background-color: hsl(var(--clr-primary-400) / 0.5);
   color: hsl(var(--clr-primary-800));
   cursor: pointer;
+}
+
+input[data-type="primary"]:checked + label {
+  background-color: hsl(var(--clr-primary-400));
+  color: hsl(var(--clr-primary-800));
 }
 
 .btn[type="reset"] {
@@ -318,10 +344,15 @@ LAYOUT
   align-self: end;
 }
 
-.btn[aria-selected="true"],
+.tip-btn[aria-selected="true"],
+.tip-btn[aria-selected="true"]:hover,
 .btn[type="reset"].active {
   background-color: hsl(var(--clr-primary-400));
   color: hsl(var(--clr-primary-800));
+}
+
+.btn[type="reset"].active {
+  cursor: pointer;
 }
 
 .results {
@@ -332,4 +363,11 @@ LAYOUT
 .results .flex {
   justify-content: space-between;
   align-items: center;
+}
+
+.error {
+  color: var(--clr-error);
+  position: absolute;
+  inset: -50% 0 auto auto;
+  transform: scaleY(100%);
 }
