@@ -1,3 +1,4 @@
+/* globals getComputedStyle */
 
 const tipCalculator = document.querySelector('.tip-calculator')
 const tipAmountDiv = tipCalculator.querySelector('#tip-result')
