@@ -12,7 +12,7 @@ CUSTOM PROPERTIES
   --clr-primary-400: 172 67% 45%;
   --clr-primary-800: 183 100% 15%;
 
-  --clr-error: rgb(247, 82, 40);
+  --clr-error: 12 93% 56%;
 
   --ff-primary: "Space Mono", monospace;
 
@@ -312,6 +312,13 @@ fieldset:last-of-type::before {
   outline: 0.125rem solid hsl(var(--clr-primary-400));
 }
 
+.tip-calculator input[type="text"].on-error {
+  outline: 0.125rem solid hsl(var(--clr-error));
+}
+.tip-calculator input[type="text"].on-error:hover {
+  outline: 0.125rem solid hsl(var(--clr-error));
+}
+
 .btn {
   border: none;
   background: none;
@@ -408,7 +415,7 @@ input[data-type="primary"]:checked + label::after {
 }
 
 .error {
-  color: var(--clr-error);
+  color: hsl(var(--clr-error));
   position: absolute;
   inset: -50% 0 auto auto;
   transform: scaleY(100%);

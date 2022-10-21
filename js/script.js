@@ -1,4 +1,3 @@
-/* globals getComputedStyle */
 
 const tipCalculator = document.querySelector('.tip-calculator')
 const tipAmountDiv = tipCalculator.querySelector('#tip-result')
@@ -44,10 +43,9 @@ tipCalculator.addEventListener('input', e => {
 
   const billInputParent = billInput.parentElement
   const billError = billInputParent.querySelector('.error')
-  const billErrorColor = getComputedStyle(billError).color
 
   if (!bill) {
-    billInput.style.outline = `0.125rem solid ${billErrorColor}`
+    billInput.classList.add('on-error')
 
     if (bill === 0) {
       billError.textContent = 'Can\'t be zero'
@@ -55,16 +53,15 @@ tipCalculator.addEventListener('input', e => {
       billError.textContent = 'Enter number'
     }
   } else {
-    billInput.style.outline = 'none'
+    billInput.classList.remove('on-error')
     billError.textContent = ''
   }
 
   const peopleInputParent = peopleInput.parentElement
   const peopleError = peopleInputParent.querySelector('.error')
-  const peopleErrorColor = getComputedStyle(peopleError).color
 
   if (!people) {
-    peopleInput.style.outline = `0.125rem solid ${peopleErrorColor}`
+    peopleInput.classList.add('on-error')
 
     if (people === 0) {
       peopleError.textContent = 'Can\'t be zero'
@@ -72,7 +69,7 @@ tipCalculator.addEventListener('input', e => {
       peopleError.textContent = 'Enter number'
     }
   } else {
-    peopleInput.style.outline = 'none'
+    peopleInput.classList.remove('on-error')
     peopleError.textContent = ''
   }
 })
@@ -84,7 +81,7 @@ tipCalculator.addEventListener('reset', _ => {
     const parent = error.parentElement
     const input = parent.querySelector('input')
 
-    input.style.outline = 'none'
+    input.classList.remove('on-error')
     error.textContent = ''
     tipAmountDiv.textContent = '0.00'
     totalDiv.textContent = '0.00'
