@@ -301,7 +301,11 @@ fieldset:last-of-type::before {
   text-align: right;
 }
 
-.tip-calculator input[type="text"]:hover,
+.tip-calculator input[type="text"]:hover {
+  outline: none;
+  outline: 0.125rem solid hsl(var(--clr-neutral-300));
+}
+
 .tip-calculator input[type="text"]:focus {
   outline: none;
   outline: 0.125rem solid hsl(var(--clr-primary-400));
