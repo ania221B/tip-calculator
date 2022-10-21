@@ -8,6 +8,7 @@ CUSTOM PROPERTIES
   --clr-neutral-400: 184 14% 56%;
   --clr-neutral-500: 186 14% 43%;
 
+  --clr-primary-200: 172 82% 83%;
   --clr-primary-400: 172 67% 45%;
   --clr-primary-800: 183 100% 15%;
 
@@ -323,7 +324,6 @@ fieldset:last-of-type::before {
   position: relative;
   padding: 0.125rem 1rem;
   border-radius: var(--br-small);
-  overflow: hidden;
 }
 
 .tip__wrapper:last-child {
@@ -343,24 +343,9 @@ input[data-type="primary"] + label {
   line-height: 1;
   background-color: hsl(var(--clr-primary-800));
   color: hsl(var(--clr-neutral-100));
-}
+  border-radius: inherit;
 
-input[data-type="primary"] + label:hover {
-  background-color: hsl(var(--clr-primary-400) / 0.5);
-  color: hsl(var(--clr-primary-800));
-  cursor: pointer;
-}
-
-input[data-type="primary"]:checked + label {
-  background-color: hsl(var(--clr-primary-400));
-  color: hsl(var(--clr-primary-800));
-}
-
-.tip-btn[aria-selected="true"],
-.tip-btn[aria-selected="true"]:hover,
-.btn[type="reset"].active {
-  background-color: hsl(var(--clr-primary-400));
-  color: hsl(var(--clr-primary-800));
+  z-index: 1;
 }
 
 .btn[type="reset"] {
@@ -369,10 +354,47 @@ input[data-type="primary"]:checked + label {
   color: hsl(var(--clr-primary-800) / 0.9);
   cursor: not-allowed;
   align-self: end;
+
+  position: relative;
+  z-index: 1;
 }
 
 .btn[type="reset"].active {
+  background-color: hsl(var(--clr-primary-400));
+  color: hsl(var(--clr-primary-800));
   cursor: pointer;
+}
+
+input[data-type="primary"] + label::after,
+.btn[type="reset"]::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background-color: hsl(var(--clr-primary-200));
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 300ms ease-out;
+}
+
+input[data-type="primary"] + label:hover {
+  color: hsl(var(--clr-primary-800));
+  cursor: pointer;
+}
+
+input[data-type="primary"] + label:hover::after,
+.btn[type="reset"].active:hover::after {
+  opacity: 1;
+}
+
+input[data-type="primary"]:checked + label {
+  background-color: hsl(var(--clr-primary-400));
+  color: hsl(var(--clr-primary-800));
+}
+
+input[data-type="primary"]:checked + label::after {
+  background-color: hsl(var(--clr-primary-400));
+  inset: 0;
 }
 
 .results {
