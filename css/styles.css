@@ -149,7 +149,7 @@ UTILITY CLASSES
 
 .container {
   width: 90%;
-  max-width: 55rem;
+  max-width: 62rem;
   margin-inline: auto;
 }
 
@@ -268,6 +268,7 @@ LAYOUT
 
 .tip-calculator {
   --flow-space: 1.5rem;
+  margin-top: 4rem;
   padding: 2rem;
   border-radius: var(--br-large);
 }
@@ -293,7 +294,7 @@ fieldset:last-of-type::before {
 }
 
 .tip-calculator input[type="text"] {
-  max-width: 100%;
+  width: 100%;
   border: none;
   border-radius: var(--br-small);
   padding-block: 0.25rem;
