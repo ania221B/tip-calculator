@@ -35,8 +35,8 @@ tipCalculator.addEventListener('input', e => {
     const totalAmount = parseFloat(Math.round((bill / people + tipAmount) + 'e2') +
   'e-2')
 
-    tipAmountDiv.textContent = tipAmount
-    totalDiv.textContent = totalAmount
+    tipAmountDiv.innerHTML = `<p><span class="currency">$</span>${tipAmount}</p>`
+    totalDiv.innerHTML = `<p><span class="currency">$</span>${totalAmount}</p>`
   }
 
   /* errors */
@@ -83,8 +83,8 @@ tipCalculator.addEventListener('reset', _ => {
 
     input.classList.remove('on-error')
     error.textContent = ''
-    tipAmountDiv.textContent = '0.00'
-    totalDiv.textContent = '0.00'
+    tipAmountDiv.textContent = '$0.00'
+    totalDiv.textContent = '$0.00'
     reset.classList.remove('active')
   })
 })
