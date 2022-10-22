@@ -87,6 +87,7 @@ tipCalculator.addEventListener('input', e => {
   }
 
   const tip = getTip('.tip-btn:checked', '#custom-tip')
+
   reset.classList.add('active')
   displayError(billInput)
   displayError(peopleInput)
