@@ -17,6 +17,7 @@ CUSTOM PROPERTIES
   --ff-primary: "Space Mono", monospace;
 
   --fs-200: 0.75rem;
+  --fs-250: 0.9rem;
   --fs-300: 1rem;
   --fs-350: 1.25rem;
   --fs-400: 1.5rem;
@@ -448,10 +449,16 @@ input[data-type="primary"]:checked + label::after {
 }
 
 .error {
+  font-size: var(--fs-250);
   color: hsl(var(--clr-error));
   position: absolute;
-  inset: -50% 0 auto auto;
-  transform: scaleY(100%);
+  inset: calc(-50% - 0.5rem) 0 auto auto;
+}
+
+@media (min-width: 56.25em) {
+  .error {
+    font-size: var(--fs-300);
+  }
 }
 
 .attribution {
