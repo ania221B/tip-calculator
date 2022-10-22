@@ -312,10 +312,10 @@ fieldset:last-of-type::before {
   outline: 0.125rem solid hsl(var(--clr-primary-400));
 }
 
-.tip-calculator input[type="text"].on-error {
+.on-error input[type="text"] {
   outline: 0.125rem solid hsl(var(--clr-error));
 }
-.tip-calculator input[type="text"].on-error:hover {
+.on-error input[type="text"]:hover {
   outline: 0.125rem solid hsl(var(--clr-error));
 }
 
