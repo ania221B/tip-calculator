@@ -87,7 +87,9 @@ body {
   background-color: hsl(var(--clr-neutral-300));
 
   display: grid;
-  place-content: center;
+  place-items: center;
+
+  position: relative;
 }
 
 /* Ggives default styling to a elements that don't have a class */
@@ -143,6 +145,13 @@ fieldset {
 body:not(:-moz-handler-blocked) fieldset {
   display: table-cell;
 }
+
+footer {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding-block: 1rem;
+}
+
 /* ==============
 UTILITY CLASSES
 =============== */
@@ -443,4 +452,17 @@ input[data-type="primary"]:checked + label::after {
   position: absolute;
   inset: -50% 0 auto auto;
   transform: scaleY(100%);
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(var(--clr-primary-800));
+}
+
+.attribution a:hover,
+.attribution a:focus {
+  color: hsl(var(--clr-primary-400));
 }
