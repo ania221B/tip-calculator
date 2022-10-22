@@ -271,6 +271,7 @@ LAYOUT
   margin-top: 2rem;
   padding: 2rem;
   border-radius: var(--br-large);
+  box-shadow: 0.75rem 0.75rem 3rem hsl(var(--clr-neutral-400));
 }
 
 @media (min-width: 56.25em) {
