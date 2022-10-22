@@ -51,12 +51,12 @@
 
       <form
         action="#"
-        class="tip-calculator container grid bg-neutral-100 flow"
+        class="tip-calculator container grid bg-neutral-100"
         data-type="primary"
         autocomplete="off"
       >
         <!--Bill-->
-        <fieldset>
+        <fieldset class="flow">
           <legend class="fs-300">Bill</legend>
           <label for="bill" class="sr-only">Enter total bill amount</label>
           <input
@@ -72,87 +72,84 @@
         </fieldset>
 
         <!--select tip % -->
-        <fieldset id="tip-selection" class="grid" data-type="secondary">
+        <fieldset id="tip-selection">
           <legend class="fs-300">Select Tip %</legend>
 
-          <div class="tip__wrapper">
-            <input
-              type="radio"
-              id="tip-5"
-              name="tip"
-              value="5"
-              class="btn tip-btn"
-              data-type="primary"
-            />
-            <label for="tip-5">5%</label>
-          </div>
-
-          <div class="tip__wrapper">
-            <input
-              type="radio"
-              id="tip-10"
-              name="tip"
-              value="10"
-              class="btn tip-btn"
-              data-type="primary"
-            />
-            <label for="tip-10">10%</label>
-          </div>
-
-          <div class="tip__wrapper">
-            <input
-              type="radio"
-              id="tip-15"
-              name="tip"
-              value="15"
-              class="btn tip-btn"
-              data-type="primary"
-            />
-            <label for="tip-15">15%</label>
-          </div>
-
-          <div class="tip__wrapper">
-            <input
-              type="radio"
-              id="tip-25"
-              name="tip"
-              value="25"
-              class="btn tip-btn"
-              data-type="primary"
-            />
-            <label for="tip-25">25%</label>
-          </div>
-
-          <div class="tip__wrapper">
-            <input
-              type="radio"
-              id="tip-50"
-              name="tip"
-              value="50"
-              class="btn tip-btn"
-              data-type="primary"
-            />
-            <label for="tip-50">50%</label>
-          </div>
-
-          <div class="tip__wrapper bg-neutral-200">
-            <label for="custom-tip" class="sr-only"
-              >Enter custom tip percent</label
-            >
-            <input
-              id="custom-tip"
-              name="custom-tip"
-              type="text"
-              inputmode="numeric"
-              pattern="\d*"
-              placeholder="Custom"
-              class="btn"
-            />
+          <div class="grid" data-type="secondary">
+            <div class="tip__wrapper">
+              <input
+                type="radio"
+                id="tip-5"
+                name="tip"
+                value="5"
+                class="btn tip-btn"
+                data-type="primary"
+              />
+              <label for="tip-5">5%</label>
+            </div>
+            <div class="tip__wrapper">
+              <input
+                type="radio"
+                id="tip-10"
+                name="tip"
+                value="10"
+                class="btn tip-btn"
+                data-type="primary"
+              />
+              <label for="tip-10">10%</label>
+            </div>
+            <div class="tip__wrapper">
+              <input
+                type="radio"
+                id="tip-15"
+                name="tip"
+                value="15"
+                class="btn tip-btn"
+                data-type="primary"
+              />
+              <label for="tip-15">15%</label>
+            </div>
+            <div class="tip__wrapper">
+              <input
+                type="radio"
+                id="tip-25"
+                name="tip"
+                value="25"
+                class="btn tip-btn"
+                data-type="primary"
+              />
+              <label for="tip-25">25%</label>
+            </div>
+            <div class="tip__wrapper">
+              <input
+                type="radio"
+                id="tip-50"
+                name="tip"
+                value="50"
+                class="btn tip-btn"
+                data-type="primary"
+              />
+              <label for="tip-50">50%</label>
+            </div>
+            <div class="tip__wrapper bg-neutral-200">
+              <label for="custom-tip" class="sr-only"
+                >Enter custom tip percent</label
+              >
+              <input
+                id="custom-tip"
+                name="custom-tip"
+                type="text"
+                inputmode="numeric"
+                pattern="\d*"
+                placeholder="Custom"
+                class="btn"
+              />
+            </div>
           </div>
         </fieldset>
 
         <!-- number of people -->
-        <fieldset>
+        <fieldset class="flow">
           <legend class="fs-300">Number of People</legend>
           <label for="people" class="sr-only">Enter number of people</label>
           <input
