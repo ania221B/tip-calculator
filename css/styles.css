@@ -268,9 +268,15 @@ LAYOUT
 
 .tip-calculator {
   --flow-space: 1.5rem;
-  margin-top: 4rem;
+  margin-top: 2rem;
   padding: 2rem;
   border-radius: var(--br-large);
+}
+
+@media (min-width: 56.25em) {
+  .tip-calculator {
+    margin-top: 4rem;
+  }
 }
 
 .tip-calculator fieldset {
