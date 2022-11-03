@@ -19,6 +19,7 @@ const reset = tipCalculator.querySelector('.btn[type="reset"]')
 const getTip = (selector1, selector2) => {
   if (!document.querySelector(selector1) && !document.querySelector(selector2).value) return 0
   if (document.querySelector(selector2).value) return parseFloat(document.querySelector(selector2).value)
+  if (isNaN(document.querySelector(selector2).value)) return 0
   return document.querySelector(selector1).value
 }
 
@@ -67,6 +68,22 @@ const displayError = (field) => {
   }
 }
 
+/**
+ * Displays error if field value is NAN
+ * @param {HTMLElement} field field the value of which is to be checked
+ */
+const checkCustom = (field) => {
+  const fieldValue = parseFloat(field.value)
+  const parent = field.parentElement
+  const error = parent.querySelector('.error')
+
+  if (isNaN(fieldValue)) {
+    error.textContent = 'Enter number'
+  } else {
+    error.textContent = ''
+  }
+}
+
 /* ==========
   EXECUTION
 ========== */
@@ -75,6 +92,7 @@ tipCalculator.addEventListener('input', e => {
   const billInput = tipCalculator.querySelector('#bill')
   const peopleInput = tipCalculator.querySelector('#people')
   const bill = parseFloat(tipCalculator.querySelector('#bill').value)
+  const customTip = tipCalculator.querySelector('#custom-tip')
   const people = parseFloat(tipCalculator.querySelector('#people').value)
 
   if (e.target.closest('#custom-tip')) {
@@ -82,8 +100,10 @@ tipCalculator.addEventListener('input', e => {
     tips.forEach(tip => {
       tip.checked = false
     })
+    checkCustom(customTip)
   } else if (e.target.closest('.tip-btn')) {
-    tipCalculator.querySelector('#custom-tip').value = ''
+    customTip.value = ''
+    customTip.parentElement.querySelector('.error').textContent = ''
   }
 
   const tip = getTip('.tip-btn:checked', '#custom-tip')

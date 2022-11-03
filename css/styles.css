@@ -455,6 +455,11 @@ input[data-type="primary"]:checked + label::after {
   inset: calc(-50% - 0.5rem) 0 auto auto;
 }
 
+.tip__wrapper .error {
+  font-size: var(--fs-200);
+  inset: 0 0.5rem auto auto;
+}
+
 @media (min-width: 56.25em) {
   .error {
     font-size: var(--fs-300);
