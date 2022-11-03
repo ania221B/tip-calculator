@@ -12,15 +12,17 @@ const reset = tipCalculator.querySelector('.btn[type="reset"]')
 ========== */
 /**
  * Gets the selected tip value
- * @param {String} selector1 selector for element with tip value that can be selected
- * @param {String} selector2 selector for element with tip value that can be selected
+ * @param {HTMLElement} containerElement parent element containing elements to check for selected value
  * @returns the number representig selected tip percentage, if no selection was made, zero is the value
  */
-const getTip = (selector1, selector2) => {
-  if (!document.querySelector(selector1) && !document.querySelector(selector2).value) return 0
-  if (document.querySelector(selector2).value) return parseFloat(document.querySelector(selector2).value)
-  if (isNaN(document.querySelector(selector2).value)) return 0
-  return document.querySelector(selector1).value
+const getTip = (containerElement) => {
+  const selectedBtn = containerElement.querySelector('.tip-btn:checked')
+  const customValue = containerElement.querySelector('#custom-tip').value
+
+  if (!selectedBtn && !customValue) return 0
+  if (customValue) return parseFloat(customValue)
+  if (isNaN(customValue)) return 0
+  return selectedBtn.value
 }
 
 /**
@@ -106,7 +108,7 @@ tipCalculator.addEventListener('input', e => {
     customTip.parentElement.querySelector('.error').textContent = ''
   }
 
-  const tip = getTip('.tip-btn:checked', '#custom-tip')
+  const tip = getTip(tipCalculator)
 
   reset.classList.add('active')
   displayError(billInput)
