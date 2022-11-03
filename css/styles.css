@@ -276,7 +276,7 @@ LAYOUT
   }
 }
 
-.tip-calculator {
+.tip-calculator__wrapper {
   --flow-space: 1.5rem;
   margin-top: 2rem;
   padding: 2rem;
@@ -285,7 +285,7 @@ LAYOUT
 }
 
 @media (min-width: 56.25em) {
-  .tip-calculator {
+  .tip-calculator__wrapper {
     margin-top: 4rem;
   }
 }
