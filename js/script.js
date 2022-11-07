@@ -57,7 +57,9 @@ const displayError = (field) => {
   const parent = field.parentElement
   const error = parent.querySelector('.error')
   if (!fieldValue) {
+    field.setAttribute('aria-invalid', 'true')
     parent.classList.add('on-error')
+    error.setAttribute('role', 'alert')
 
     if (fieldValue === 0) {
       error.textContent = 'Can\'t be zero'
@@ -65,7 +67,9 @@ const displayError = (field) => {
       error.textContent = 'Enter number'
     }
   } else {
+    field.removeAttribute('aria-invalid')
     parent.classList.remove('on-error')
+    error.removeAttribute('role')
     error.textContent = ''
   }
 }
@@ -80,8 +84,12 @@ const checkCustom = (field) => {
   const error = parent.querySelector('.error')
 
   if (isNaN(fieldValue)) {
+    field.setAttribute('aria-invalid', 'true')
+    error.setAttribute('role', 'alert')
     error.textContent = 'Enter number'
   } else {
+    field.removeAttribute('aria-invalid')
+    error.removeAttribute('role')
     error.textContent = ''
   }
 }
@@ -104,8 +112,14 @@ tipCalculator.addEventListener('input', e => {
     })
     checkCustom(customTip)
   } else if (e.target.closest('.tip-btn')) {
+    const customParent = customTip.parentElement
+    const customError = customParent.querySelector('.error')
+
+    customTip.removeAttribute('aria-invalid')
     customTip.value = ''
-    customTip.parentElement.querySelector('.error').textContent = ''
+    customError.textContent = ''
+    customError.removeAttribute('role')
+    console.log(customError)
   }
 
   const tip = getTip(tipCalculator)
