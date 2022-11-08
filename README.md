@@ -14,9 +14,6 @@ This is a solution to the [Tip calculator app challenge on Frontend Mentor](http
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -30,20 +27,13 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+![Mobile view](./screenshots/Frontend-Mentor-Tip-calculator-app-mobile.png)
+![Desktop view](./screenshots/Frontend-Mentor-Tip-calculator-app-desktop.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [GitHub](https://github.com/ania221B/tip-calculator)
+- Live Site URL: [GitHub Pages](https://ania221b.github.io/tip-calculator/)
 
 ## My process
 
@@ -54,59 +44,157 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+#### Forms and landmarks
 
-To see how you can add code snippets, see below:
+##### Landmarks
+
+- A `landmark` is an important subsection of the page.
+- A `landmark` role is an abstract role for a section of content that is important enough for users to want to be able to navigate to it quickly and easily.
+- Landmarks help assistive technologies in easy navigation and content finding.
+- To create a landmark role you should use semantic elements.
+- You mustn't use `role=landmark`.
+
+[ARIA: landmark role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/landmark_role) article on MDN explaining what a landmark and landmark role are and also listing best practices related to these two
+
+##### The form element
+
+- The `<form>` element defines a `form` landmark when it has an accessible name.
+- An **accessible name** is a short string that is associated with an element and serves as a label for it. It describes its purpose and distinguishes it from other elements.
+- One way to create an accessible name is to make use of attributes such as `aria-label`, `aria-labelledby` or `title`.
+  For the tip calculator I used `aria-labelledby` attribute. I've put a `header` element with `h1` heading inside the `form` and wrapped the rest of content in a div:
 
 ```html
-<h1>Some HTML code I'm proud of</h1>
+<form action="#" autocomplete="off" class="tip-calculator container" aria-labelledby="form-title">
+	<header class="center">
+		<h1 class="sr-only">Splitter, the tip calculator</h1>
+		<div class="logo" aria-hidden="true"></div>
+	</header>
+	<div class="tip-calculator__wrapper"></div>
+</form
 ```
+
+[ARIA: form role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/form_role) - an MDN article about the form role
+[Providing Accessible Names and Descriptions](https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/) - explanation of accessible names and descriptions and instructions on how to use them
+
+#### The SVG
+
+The design of the calculator includes an SVG with a wordmark for the calculator. Since the image is the name itself I decided to hide it for screen readers with `aria-hidden` attribute. This way the name "Splitter" is provided to screen reader users in the heading,which is visually hidden, and in the SVG for sighted users.
+
+#### Grouping of the controls
+
+Grouping related controls makes the form easier to understand for the users, as they can focus on smaller chunks of it. Groups of controls can be created in two ways:
+
+- with the use of `<fieldset>` and `<legend>` elements
+- through associating related controls with WAI-ARIA
+
+I chose the first option.
+
+- `<fieldset>` is the container that holds related controls together
+- `<legend>` functions as a heading for the whole group
+
+[Grouping Controls](https://www.w3.org/WAI/tutorials/forms/grouping/) - explanation on how to group related form controls
+
+#### Resetting `<fieldset>` and `<legend>` default styling
+
+`<fieldset>` and `<legend>` elements have some styling by default. The way they normally look doesn't match the design. Therefore these default styles had to be removed:
+
 ```css
-.proud-of-this-css {
-  color: papayawhip;
+legend {
+  padding: 0;
+  display: table;
 }
-```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
+
+fieldset {
+  border: 0;
+  padding: 0.01rem 0 0 0;
+  margin: 0;
+  min-width: 0;
+}
+
+body:not(:-moz-handler-blocked) fieldset {
+  display: table-cell;
 }
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+[Reset your fieldset](https://thatemil.com/blog/2015/01/03/reset-your-fieldset/) - article explaining how to remove default styling of `<fieldset>` and `<legend>` elements
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+#### Input fields: `type="number"` vs. `inputmode="decimal"`
+
+The `number` type inputs are to be used for numbers that are supposed to be incremented. Hence browsers usually display arrows for increasing and decreasing the value.
+This is not the case for the tip calculator and so I decided to use `<input>` with the type of `text` and `inputmode` attribute:
+
+```html
+<input type="text" inputmode="numeric" pattern="\d*" />
+```
+
+#### Rounding numbers with JS
+
+- `Math.round()` function rounds the number to the nearest integer and returns that value.
+- `toFixed()` function converts the number to a string and keeps the specified number of decimal places. The number of decimal places you want is the parameter of the function. This parameter is optional and if omitted it is assumed it's `0`.
+- `parseFloat()` converts a string to a floating point number
+
+When rounding numbers in JavaScript it is a good idea to use exponential notation, which lets you avoid any rounding errors:
+
+```javascript
+const numberToRound = 4.2765;
+const rounded = parseFloat(Math.round(numberToRound + "e2") - "e-2");
+```
+
+[Rounding Decimals in JavaScript](https://www.jacklmoore.com/notes/rounding-in-javascript/) - short article explaining how to round decimal numbers in JavaScript
+[How to Round to a Certain Number of Decimal Places in JavaScript](https://medium.com/swlh/how-to-round-to-a-certain-number-of-decimal-places-in-javascript-ed74c471c1b8) - more detailed article on rounding based on the one provided above
+
+#### Accessible error messages
+
+##### 1. Indicate that input is invalid
+
+- First you need to indicate that the input is invalid. You can do so with the `aria-invalid` attribute, which you add to the field with incorrect value. Once the input is corrected, the attribute needs to be removed
+- Fields with `aria-invalid` attribute are read out as being invalid
+- You can use `aria-invalid` to style the incorrect field appropriately:
+
+```css
+input[aria-invalid="true"] {
+  color: red;
+}
+```
+
+##### 2. Use visual indicators to draw attention to incorrect input
+
+- This is self explanatory. You can use text color, borders, backgrounds, icons, etc.
+- As noted above you can make use of `aria-invalid` attribute when styling
+
+##### 3. Make sure the error will be read out to user
+
+Use attributes on on the `div` containing the error message and present in HTML on page load:
+
+- `role="alert"`
+- `aria-live="assertive"` combined with `aria-relevant="additions removlas"`, you may also want to use `aria-atomic="true"` (if you want the element to be treated as a whole)
+  Both `role="alert"` and `aria-live` change the element into a live region which means changes to it will be read out.
+  `aria-alert` does the same thing as `aria-live="assertive"` + `aria-atomic="true"`
+
+[How to make inline error messages accessible](https://hidde.blog/how-to-make-inline-error-messages-accessible/) - article explaining techniques you can use to ensure error messages are accessible
+[ARIA live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) - an MDN article with detailed information about live regions and different attributes you can use
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+- Forms
+- Accessibility
+- JavaScript
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- [ARIA: landmark role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/landmark_role) article on MDN explaining what a landmark and landmark role are and also listing best practices related to these two
+- [ARIA: form role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/form_role) - an MDN article about the form role
+- [Providing Accessible Names and Descriptions](https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/) - explanation of accessible names and descriptions and instructions on how to use them
+- [Grouping Controls](https://www.w3.org/WAI/tutorials/forms/grouping/) - explanation on how to group related form controls
+- [Reset your fieldset](https://thatemil.com/blog/2015/01/03/reset-your-fieldset/) - article explaining how to remove default styling of `<fieldset>` and `<legend>` elements
+- [Rounding Decimals in JavaScript](https://www.jacklmoore.com/notes/rounding-in-javascript/) - short article explaining how to round decimal numbers in JavaScript
+- [How to Round to a Certain Number of Decimal Places in JavaScript](https://medium.com/swlh/how-to-round-to-a-certain-number-of-decimal-places-in-javascript-ed74c471c1b8) - more detailed article on rounding based on the one provided above
+- [How to make inline error messages accessible](https://hidde.blog/how-to-make-inline-error-messages-accessible/) - article explaining techniques you can use to ensure error messages are accessible
+- [ARIA live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) - an MDN article with detailed information about live regions and different attributes you can use
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
 - Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
