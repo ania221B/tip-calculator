@@ -119,7 +119,6 @@ tipCalculator.addEventListener('input', e => {
     customTip.value = ''
     customError.textContent = ''
     customError.removeAttribute('role')
-    console.log(customError)
   }
 
   const tip = getTip(tipCalculator)
@@ -144,7 +143,9 @@ tipCalculator.addEventListener('reset', _ => {
     const parent = error.parentElement
     const input = parent.querySelector('input')
 
-    input.classList.remove('on-error')
+    parent.classList.remove('on-error')
+    input.removeAttribute('aria-invalid')
+    error.removeAttribute('role')
     error.textContent = ''
   })
 
