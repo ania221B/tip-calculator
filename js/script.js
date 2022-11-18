@@ -146,8 +146,9 @@ tipCalculator.addEventListener('reset', _ => {
 
     input.classList.remove('on-error')
     error.textContent = ''
-    tipAmountDiv.innerHTML = '<p><span class="currency">$</span>0.00</p>'
-    totalDiv.innerHTML = '<p><span class="currency">$</span>0.00</p>'
-    reset.classList.remove('active')
   })
+
+  tipAmountDiv.innerHTML = '<p><span class="currency">$</span>0.00</p>'
+  totalDiv.innerHTML = '<p><span class="currency">$</span>0.00</p>'
+  reset.classList.remove('active')
 })
