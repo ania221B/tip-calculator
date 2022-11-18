@@ -14,6 +14,7 @@ This is a solution to the [Tip calculator app challenge on Frontend Mentor](http
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
+- [Acknowledgements](#acknowledgements)
 
 ## Overview
 
@@ -130,6 +131,29 @@ This is not the case for the tip calculator and so I decided to use `<input>` wi
 <input type="text" inputmode="numeric" pattern="\d*" />
 ```
 
+**UPDATE**
+Changed the inputs to `<input type="number">` and removed the spinners.
+
+#### Removing spinners from `<input type="number">`
+
+For Firefox:
+
+```css
+input[type="number"] {
+  appearance: textfield;
+}
+```
+
+For Chrome, Safari, Edge and Opera:
+
+```css
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+```
+
 #### Rounding numbers with JS
 
 - `Math.round()` function rounds the number to the nearest integer and returns that value.
@@ -198,3 +222,7 @@ Use attributes on on the `div` containing the error message and present in HTML 
 ## Author
 
 - Frontend Mentor - [@ania221B](https://www.frontendmentor.io/profile/ania221b)
+
+## Acknowledgements
+
+Shout out to [Victor](https://www.frontendmentor.io/profile/Victor-Nyagudi) who shared feedback on inputs😊
