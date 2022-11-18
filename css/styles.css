@@ -311,7 +311,7 @@ fieldset:last-of-type::before {
   inset: 0.75rem auto 0.5rem 1rem;
 }
 
-.tip-calculator input[type="text"] {
+.tip-calculator input[type="number"] {
   width: 100%;
   border: none;
   border-radius: var(--br-small);
@@ -319,22 +319,29 @@ fieldset:last-of-type::before {
   padding-inline: 1rem;
   color: hsl(var(--clr-primary-800));
   text-align: right;
+  appearance: textfield;
 }
 
-.tip-calculator input[type="text"]:hover {
+.tip-calculator input[type="number"]::-webkit-inner-spin-button,
+.tip-calculator input[type="number"]::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+.tip-calculator input[type="number"]:hover {
   outline: none;
   outline: 0.125rem solid hsl(var(--clr-neutral-300));
 }
 
-.tip-calculator input[type="text"]:focus {
+.tip-calculator input[type="number"]:focus {
   outline: none;
   outline: 0.125rem solid hsl(var(--clr-primary-400));
 }
 
-.on-error input[type="text"] {
+.on-error input[type="number"] {
   outline: 0.125rem solid hsl(var(--clr-error));
 }
-.on-error input[type="text"]:hover {
+.on-error input[type="number"]:hover {
   outline: 0.125rem solid hsl(var(--clr-error));
 }
 
